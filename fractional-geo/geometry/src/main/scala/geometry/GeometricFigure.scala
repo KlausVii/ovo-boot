@@ -6,7 +6,8 @@ import canvas.FigureCanvas
 
 abstract class GeometricFigure(val strokeColor: Color,
                                val fillColor: Option[Color],
-                               val p: Point) {
+                               override val p: Point)
+    extends Drawable {
   // abstract
   def perimeter: Double
   def area: Double
