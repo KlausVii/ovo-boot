@@ -29,19 +29,36 @@ class GeometricFigureTest extends FlatSpec with Matchers with MockFactory {
     mockFigure.outlineRectangle _ when (*, *, *, *)
     r.draw(mockFigure)
     mockFigure.setDrawingColor _ verify Color.black
-    mockFigure.outlineRectangle _ verify (r.p.x, r.p.y, r.w, r.h)
+    mockFigure.outlineRectangle _ verify (r.p.x, r.p.y, r.v, r.h)
   }
   it should "fill and stroke when fill color is set" in {
     val e = new Ellipse(2, 3, fc = Some(Color.cyan))
     mockFigure.setDrawingColor _ when *
-    mockFigure.fillEclipse _ when (*, *, *, *)
-    mockFigure.outlineEclipse _ when (*, *, *, *)
+    mockFigure.fillEllipse _ when (*, *, *, *)
+    mockFigure.outlineEllipse _ when (*, *, *, *)
     e.draw(mockFigure)
     inSequence {
       mockFigure.setDrawingColor _ verify Color.cyan
-      mockFigure.fillEclipse _ verify (e.p.x, e.p.y, e.hr, e.vr)
+      mockFigure.fillEllipse _ verify (e.p.x, e.p.y, e.hr, e.vr)
       mockFigure.setDrawingColor _ verify Color.black
-      mockFigure.outlineEclipse _ verify (e.p.x, e.p.y, e.hr, e.vr)
+      mockFigure.outlineEllipse _ verify (e.p.x, e.p.y, e.hr, e.vr)
     }
+  }
+
+  "equals" should "return true for parent child" in {
+    val r = new Rectangle(2, 2)
+    val sqr = new Square(2)
+    (r == sqr) shouldBe true
+    (sqr == r) shouldBe true
+  }
+  it should "false for unequal parent child" in {
+    val r = new Rectangle(2, 4)
+    val sqr = new Square(2)
+    (r == sqr) shouldBe false
+  }
+  it should "false for different types" in {
+    val s = new Square(2)
+    val c = new Circle(2)
+    (s equals c) shouldBe false
   }
 }
