@@ -2,6 +2,8 @@ package geometry
 
 import java.awt.Color
 
+import canvas.FigureCanvas
+
 abstract class GeometricFigure(val strokeColor: Color,
                                val fillColor: Option[Color],
                                val p: Point) {

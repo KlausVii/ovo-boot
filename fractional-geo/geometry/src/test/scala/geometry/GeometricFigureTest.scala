@@ -2,6 +2,7 @@ package geometry
 
 import java.awt.Color
 
+import canvas.FigureCanvas
 import org.scalatest.{FlatSpec, Matchers}
 import org.scalamock.scalatest.MockFactory
 
