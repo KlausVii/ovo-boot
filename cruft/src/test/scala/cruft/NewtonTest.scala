@@ -1,4 +1,4 @@
-package day2
+package cruft
 
 import org.scalatest.FlatSpec
 
