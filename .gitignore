@@ -46,3 +46,5 @@ project/plugins/project/
 ### Scala template
 *.class
 *.log
+/terraform/training/terraform.tfstate
+/terraform/training/terraform.tfstate.backup
