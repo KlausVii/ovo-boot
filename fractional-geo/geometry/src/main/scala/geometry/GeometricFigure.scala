@@ -14,11 +14,8 @@ abstract class GeometricFigure(val strokeColor: Color,
   def fill(f: FigureCanvas, c: Color): Unit
   def stroke(f: FigureCanvas, c: Color): Unit
   // concrete
-  def draw(f: FigureCanvas): Unit = {
-    fillColor match {
-      case Some(c) => fill(f, c)
-      case None    =>
-    }
+  override def draw(f: FigureCanvas): Unit = {
+    fillColor.foreach(fill(f, _))
     stroke(f, strokeColor)
   }
 
@@ -48,6 +45,8 @@ class Rectangle(val v: Double,
   require(v > 0 && h > 0)
   override def perimeter: Double = 2 * v + 2 * h
   override def area: Double = v * h
+
+  override def bounds(): (Point, Double, Double) = (p, h, v)
 
   override def fill(f: FigureCanvas, c: Color): Unit = {
     f.setDrawingColor(c)
@@ -92,6 +91,9 @@ class Ellipse(val vr: Double,
   override def perimeter: Double =
     2 * math.Pi * math.sqrt((vr * vr + hr * hr) / 2)
   override def area: Double = math.Pi * vr * hr
+
+  override def bounds(): (Point, Double, Double) =
+    (Point(p.x - hr, p.y - vr), vr * 2, hr * 2)
 
   override def fill(f: FigureCanvas, c: Color): Unit = {
     f.setDrawingColor(c)
