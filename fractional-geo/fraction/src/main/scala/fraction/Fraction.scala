@@ -13,6 +13,7 @@ class Fraction(val nom: Int, val denom: Int) {
   def -(f: Fraction): Fraction = this + -f
   def *(f: Fraction): Fraction =
     Fraction(this.nom * f.nom, this.denom * f.denom)
+  def *(d: Double): Double = d * this.nom / this.denom
   def /(f: Fraction): Fraction = this * Fraction(f.denom, f.nom)
   def unary_- : Fraction = Fraction(-nom, denom)
   def unary_+ : Fraction = this

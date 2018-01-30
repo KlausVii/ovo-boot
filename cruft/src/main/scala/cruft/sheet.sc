@@ -28,20 +28,5 @@
   }
 
   val fib = fibber
-
-  fib()
-  fib()
-  fib()
-  fib()
-  fib()
-  fib()
-
-
   val fub = fiberStream
-  fub()
-  fub()
-  fub()
-  fub()
-  fub()
-  fub()
-  fub()
+

@@ -68,4 +68,9 @@ class FractionTest extends FlatSpec with Matchers {
   "inverse" should "invert the fraction" in {
     ~Fraction(1, 2) should be(Fraction(2))
   }
+
+  "multiply by doublle" should "give product as double" in {
+    val res = Fraction(1, 3) * 3.0
+    res shouldBe 1.0
+  }
 }
