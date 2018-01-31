@@ -3,6 +3,7 @@ package cruft
 import org.scalatest.FlatSpec
 
 class NewtonTest extends FlatSpec {
+  implicit val p = Precision(0.000001)
   "Newton's method" should "return the approx the square root of 4 -> ~2 within 1e-6" in {
     val res = Newton.method(4)
     assert(res.isDefined)
