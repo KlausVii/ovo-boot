@@ -69,8 +69,15 @@ class FractionTest extends FlatSpec with Matchers {
     ~Fraction(1, 2) should be(Fraction(2))
   }
 
-  "multiply by doublle" should "give product as double" in {
-    val res = Fraction(1, 3) * 3.0
+  "multiply by double" should "give product as double" in new Converters {
+    val res: Double = Fraction(1, 3) * 3.0
     res shouldBe 1.0
+  }
+
+  "match" should "work with /" in {
+    (Fraction(1, 2) match {
+      case 1 / 2 => true
+      case _     => false
+    }) shouldBe true
   }
 }

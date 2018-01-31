@@ -1,9 +1,9 @@
 package scaling
 
-import fraction.Fraction
+import fraction.{Converters, Fraction}
 import geometry.{Ellipse, GeometricFigure, Rectangle}
 
-object Scaling {
+object Scaling extends Converters {
   def scaleFigure(g: GeometricFigure, frac: Fraction): GeometricFigure =
     g match {
       case r: Rectangle => new Rectangle(frac * r.v, frac * r.h)
